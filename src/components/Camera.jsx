@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Container, Button, Modal } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import "../css/Camera.css";
 
 let camWidth = 600;
