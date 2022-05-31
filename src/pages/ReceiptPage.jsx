@@ -34,7 +34,6 @@ const ReceiptPage = () => {
         }
       },
       (err) => {
-        console.log(err.code);
         setError(err.code);
       }
     );
@@ -94,7 +93,9 @@ const ReceiptPage = () => {
   return (
     <div>
       <h1 className="text-center">{title}</h1>
-      <h2 className="text-center">Scan your receipts here</h2>
+      <h2 style={{ fontSize: "1.5em" }} className="text-center">
+        {new Date(createdAt).toLocaleDateString()}
+      </h2>
       <input
         onChange={handleImageChange}
         ref={inputRef}
@@ -103,7 +104,9 @@ const ReceiptPage = () => {
         accept="image/*"
         multiple
       />
-      <div style={{ display: "flex", justifyContent: "center" }}>{renderScanButton()}</div>
+      <div className="mt-3 mb-3" style={{ display: "flex", justifyContent: "center" }}>
+        {renderScanButton()}
+      </div>
 
       {images.length !== 0 && (
         //   TODO: refactor this into ImageList component
