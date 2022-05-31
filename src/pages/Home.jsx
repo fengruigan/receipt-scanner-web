@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 
 const Home = () => {
   let navigate = useNavigate();
+
   return (
     <div>
       <div style={{ marginTop: "10em" }}>
@@ -12,13 +13,7 @@ const Home = () => {
           <h2>Split your bills easily by scanning your receipts!</h2>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            onClick={() => {
-              navigate("/receipts");
-            }}
-          >
-            Start
-          </Button>
+          <Button onClick={() => navigate("/sessions")}>Start</Button>
         </div>
       </div>
     </div>

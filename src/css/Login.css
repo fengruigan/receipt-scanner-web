@@ -1,0 +1,25 @@
+.Login .login-options {
+  width: 200px;
+  text-align: left;
+  border: none;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.Login #guestLoginButton {
+  background-color: #f4b400;
+}
+
+.Login #emailLoginButton {
+  background-color: #db4437;
+}
+.Login #googleLoginButton {
+  background-color: white;
+  color: black;
+}
+
+.Login .login-options:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
+}

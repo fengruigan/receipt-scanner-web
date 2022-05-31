@@ -2,6 +2,14 @@
 import { initializeApp } from "@firebase/app";
 import { getDownloadURL, getStorage, ref as storageRef, uploadBytes, deleteObject } from "@firebase/storage";
 import { getDatabase, onValue, ref as dbRef, set } from "@firebase/database";
+import {
+  getAuth,
+  signInAnonymously,
+  signOut,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "@firebase/auth";
 import { v4 } from "uuid";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,14 +27,35 @@ const config = {
   measurementId: "G-S290WBE6ZL",
 };
 
-// const app = initializeApp(config);
-
 export const firebaseInit = () => initializeApp(config);
 
+// auth
+export const anonymousSignIn = async () => {
+  return await signInAnonymously(getAuth());
+};
+
+export const emailCreateUser = async (email, password) => {
+  return await createUserWithEmailAndPassword(getAuth(), email, password);
+};
+
+export const emailSignIn = async (email, password) => {
+  return await signInWithEmailAndPassword(getAuth(), email, password);
+};
+
+export const logOut = async () => {
+  await signOut(getAuth());
+};
+
+export const addAuthListener = (callback) => {
+  return onAuthStateChanged(getAuth(), (user) => {
+    callback(user);
+  });
+};
+
 // storage
-export const uploadToStorage = async (parentRef, file) => {
+export const uploadToStorage = async (parentRef, file, extension) => {
   let uid = v4();
-  return await uploadBytes(storageRef(getStorage(), `${parentRef}/${uid}.jpg`), file);
+  return await uploadBytes(storageRef(getStorage(), `${parentRef}/${uid}.${extension || "jpg"}`), file);
 };
 
 export const getUrl = async (filePath) => {
