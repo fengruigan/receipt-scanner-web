@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "@firebase/app";
 import { getDownloadURL, getStorage, ref as storageRef, uploadBytes, deleteObject } from "@firebase/storage";
-import { getDatabase, onValue, ref as dbRef, set } from "@firebase/database";
+import { getDatabase, onValue, push, ref as dbRef, set } from "@firebase/database";
 import {
   getAuth,
   signInAnonymously,
@@ -71,8 +71,18 @@ export const writeToDatabase = (ref, data) => {
   set(dbRef(getDatabase(), ref), data);
 };
 
-export const addDBListener = (ref, callback) => {
-  return onValue(dbRef(getDatabase(), ref), (snapshot) => {
-    callback(snapshot.val());
-  });
+export const pushToDatabaseList = (ref, data) => {
+  let pushRef = push(dbRef(getDatabase(), ref));
+  set(pushRef, data);
+  return pushRef.key;
+};
+
+export const addDBListener = (ref, callback, cancelCallback) => {
+  return onValue(
+    dbRef(getDatabase(), ref),
+    (snapshot) => {
+      callback(snapshot.val());
+    },
+    cancelCallback
+  );
 };

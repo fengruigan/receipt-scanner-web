@@ -12,7 +12,7 @@ const Login = () => {
   let [error, setError] = useState(null);
   let [showModal, setShowModal] = useState(false);
   let [showToast, setShowToast] = useState(false);
-  let [newEmail, setNewEmail] = useState(true);
+  let [newEmail, setNewEmail] = useState(false);
   let navigate = useNavigate();
   let formRef = useRef();
 
