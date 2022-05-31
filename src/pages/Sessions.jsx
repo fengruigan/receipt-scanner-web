@@ -47,7 +47,7 @@ const Sessions = () => {
         ...sessions,
         { sessionId: sessionId, title: session.title, createdAt: session.createdAt },
       ]);
-      //   navigate(`/sessions/${sessionId}`);
+      navigate(`/sessions/${sessionId}`);
     } catch (err) {
       setError(err.code);
       setShowToast(true);
