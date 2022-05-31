@@ -128,12 +128,12 @@ const Login = () => {
             Sign in with Email
           </Button>
         </div>
-        <div className="d-flex justify-content-center mb-3">
+        {/* <div className="d-flex justify-content-center mb-3">
           <Button className="login-options" id="googleLoginButton" disabled>
             <FontAwesomeIcon icon={faGoogle} className="me-2" />
             Sign in with Google
           </Button>
-        </div>
+        </div> */}
       </div>
       {renderEmailSignInModal()}
       {renderToast()}
