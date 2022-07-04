@@ -1,0 +1,3 @@
+.ReceiptPage .receipt-list-item:hover {
+  cursor: move;
+}

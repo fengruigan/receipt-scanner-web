@@ -6,7 +6,7 @@ import "../css/Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+// import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   let [error, setError] = useState(null);

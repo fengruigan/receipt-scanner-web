@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Nav, Navbar, Container, Toast, ToastContainer } from "react-bootstrap";
+import { Nav, Navbar, Container, Toast, ToastContainer, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { addAuthListener, logOut } from "../utils/firebaseUtil";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,10 +51,10 @@ const NavigationBar = () => {
               </Nav.Link>
             ) : (
               <>
-                <Nav.Link onClick={() => navigate("/sessions")}>Account</Nav.Link>
-                <Nav.Link className="float-end" onClick={logOut}>
-                  Sign out
-                </Nav.Link>
+                <NavDropdown title={user.isAnonymous ? `guest-${user.uid}` : `${user.email}`}>
+                  <Nav.Link onClick={() => navigate("/sessions")}>Account</Nav.Link>
+                  <Nav.Link onClick={logOut}>Sign out</Nav.Link>
+                </NavDropdown>
               </>
             )}
           </Nav>
